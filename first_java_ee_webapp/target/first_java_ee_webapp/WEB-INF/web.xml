@@ -5,6 +5,13 @@
          version="4.0">
 
     <display-name>Archetype Created Web Application</display-name>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.css</url-pattern>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+
     <context-param>
         <param-name>jdbcConnectionString</param-name>
         <param-value>javaee_test_db?createDatabaseIfNotExist=true&amp;
@@ -12,12 +19,10 @@
             characterEncoding=UTF-8&amp;serverTimezone=UTC
         </param-value>
     </context-param>
-
     <context-param>
         <param-name>dbUsername</param-name>
         <param-value>root</param-value>
     </context-param>
-
     <context-param>
         <param-name>dbPassword</param-name>
         <param-value>Twodaysago1!</param-value>

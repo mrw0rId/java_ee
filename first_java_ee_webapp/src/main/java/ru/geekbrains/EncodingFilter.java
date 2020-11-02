@@ -18,6 +18,7 @@ public class EncodingFilter  implements Filter {
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().println("<link rel='stylesheet' href='" + filterConfig.getServletContext().getContextPath() + "/style.css'>");
         filterChain.doFilter(req, resp);
     }
 

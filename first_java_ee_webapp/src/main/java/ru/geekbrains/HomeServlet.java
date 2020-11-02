@@ -11,13 +11,14 @@ import java.io.IOException;
 public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().println("<link rel='stylesheet' href='" + req.getContextPath() + "/style.css'>");
 
         resp.getWriter().println("<h1>Home</h1>");
         resp.getWriter().println("<ul>");
         resp.getWriter().println("<li><a href='" + req.getContextPath() + "/home'>Home</a></li>");
-        resp.getWriter().println("<li><a href='" + req.getContextPath() + "/about'>About</a></li>");
-        resp.getWriter().println("<li><a href='" + req.getContextPath() + "/contacts'>Contacts</a></li>");
+        resp.getWriter().println("<li><a href='" + req.getContextPath() + "/catalog'>Catalog</a></li>");
+        resp.getWriter().println("<li><a href='" + req.getContextPath() + "/product/*'>Product</a></li>");
+        resp.getWriter().println("<li><a href='" + req.getContextPath() + "/cart'>Cart</a></li>");
+        resp.getWriter().println("<li><a href='" + req.getContextPath() + "/orders'>Orders</a></li>");
         resp.getWriter().println("</ul>");
     }
 }
