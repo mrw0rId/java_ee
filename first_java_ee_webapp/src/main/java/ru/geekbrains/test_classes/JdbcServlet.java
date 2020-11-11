@@ -32,7 +32,7 @@ public class JdbcServlet extends HttpServlet {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("SHOW TABLES;");
             while (rs.next()){
-                String tableName = rs.getString(0);
+                String tableName = rs.getString(1);
                 resp.getWriter().println("<p> " + tableName + "</p>");
             }
         }catch(SQLException e){
