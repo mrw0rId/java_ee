@@ -35,17 +35,6 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <c:choose>
-                        <c:when test="${requestScope.id == '1'}">
-                            <a href="https://cutt.ly/tgV2UlR">Photo</a>
-                        </c:when>
-                        <c:when test="${requestScope.id == '2'}">
-                            <a href="https://cutt.ly/BgV2PuE">Photo</a>
-                        </c:when>
-                        <c:otherwise>
-                            <a href="#"></a>
-                        </c:otherwise>
-                    </c:choose>
                 </li>
             </ul>
         </div>
@@ -58,13 +47,14 @@
                     <input type="hidden" id="id" name="id">
                     <div class="form-group">
                         <label>Product</label>
-                        <input type="text" class="form-control" id="product" name="product" placeholder="${requestScope.product}">
+                        <input type="text" class="form-control" id="product" name="product" placeholder="${param.get("product")}">
                     </div>
                     <div class="form-group">
                         <label>Date of manufacture</label>
-                        <input type="text" class="form-control" id="dateOfAdding" name="dateOfAdding" placeholder="${requestScope.dateOfAdding}" >
+                        <input type="text" class="form-control" id="dateOfAdding" name="dateOfAdding" placeholder="${param.get("dateOfAdding")}" >
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a class="btn btn-primary" href="${param.get("photoUrl")}">Photo</a>
+<%--                    <button type="submit" class="btn btn-primary">Submit</button>--%>
                 </form>
             </div>
         </div>

@@ -5,26 +5,43 @@ import java.time.LocalDate;
 public class Product {
 
     private Long id;
-
     private String product;
-
     private LocalDate dateOfAdding;
+    private String url;
 
     public Product() {
+    }
+    public Product(Long id,String product,LocalDate dateOfAdding, String url) {
+        this.id = id;
+        this.product = product;
+        this.dateOfAdding = dateOfAdding;
+        this.url = url;
+    }
+    public Product(String product,LocalDate dateOfAdding, String url) {
+        this.product = product;
+        this.dateOfAdding = dateOfAdding;
+        this.url = url;
     }
     public Product(String product,LocalDate dateOfAdding) {
         this.product = product;
         this.dateOfAdding = dateOfAdding;
     }
-    public Product(Long id, String product) {
-        this.id = id;
+    public Product(String product, String url) {
         this.product = product;
+        this.url = url;
         this.dateOfAdding = LocalDate.now();
     }
-    public Product(Long id, String product, LocalDate dateOfAdding) {
-        this.id = id;
+    public Product(String product) {
         this.product = product;
         this.dateOfAdding = dateOfAdding;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Long getId() {

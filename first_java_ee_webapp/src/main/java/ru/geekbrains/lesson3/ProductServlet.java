@@ -34,6 +34,9 @@ public class ProductServlet extends HttpServlet {
             if(req.getParameter("dateOfAdding")!=null){
                 req.setAttribute("dateOfAdding",req.getParameter("dateOfAdding"));
             } else req.setAttribute("dateOfAdding","гггг-мм-дд");
+            if(req.getParameter("photoInput")!=null){
+                req.setAttribute("photoInput",req.getParameter("photoInput"));
+            } else req.setAttribute("photoInput","#");
             req.getRequestDispatcher("/WEB-INF/views/header.jsp").include(req,resp);
             req.getRequestDispatcher("/WEB-INF/views/product.jsp").include(req,resp);
         }

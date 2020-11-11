@@ -27,7 +27,9 @@ public class DMLServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        /*
+        Пока обрабатывает только инсерты, надо добаыить другие DML
+         */
         String date = req.getParameter("dateOfAddingInput");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         LocalDate dateOfAdding = null;
@@ -42,12 +44,12 @@ public class DMLServlet extends HttpServlet {
         String product = req.getParameter("productInput");
         String photoUrl = req.getParameter("photoInput");
         try {
-            catalogDB.insert(new Product(product, dateOfAdding));
+            catalogDB.insert(new Product(product, dateOfAdding,photoUrl));
         } catch (SQLException e) {
             e.printStackTrace();
         }
 //        req.getRequestDispatcher(getServletContext().getContextPath()+"/product").forward(req,resp);
-//        resp.sendRedirect(getServletContext().getContextPath()+"/product");
+        resp.sendRedirect(getServletContext().getContextPath()+"/product");
     }
 
     @Override

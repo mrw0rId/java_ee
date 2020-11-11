@@ -1,13 +1,13 @@
 ru\geekbrains\test_classes\JdbcServlet.class
-ru\geekbrains\DMLServlet.class
-ru\geekbrains\Product.class
 ru\geekbrains\lesson3\HomeServlet.class
-ru\geekbrains\CatalogDB.class
 ru\geekbrains\lesson3\EncodingFilter.class
 ru\geekbrains\test_classes\FirstHttpServlet.class
 ru\geekbrains\lesson3\CartServlet.class
-ru\geekbrains\ContextListener.class
 ru\geekbrains\lesson3\ProductServlet.class
+ru\geekbrains\lesson3\ContextListener.class
 ru\geekbrains\lesson3\CatalogServlet.class
 ru\geekbrains\lesson3\OrdersServlet.class
 ru\geekbrains\test_classes\FirstServlet.class
+ru\geekbrains\lesson3\DMLServlet.class
+ru\geekbrains\lesson3\Product.class
+ru\geekbrains\lesson3\CatalogDB.class
