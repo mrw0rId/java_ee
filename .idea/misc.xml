@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/first_java_ee_webapp" />
+    <file type="web" url="file://$PROJECT_DIR$/jsf-web-app" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">

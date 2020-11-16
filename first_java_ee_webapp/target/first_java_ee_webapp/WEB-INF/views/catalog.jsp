@@ -1,5 +1,5 @@
-<%@ page import="ru.geekbrains.CatalogDB" %>
-<%@ page import="ru.geekbrains.Product" %>
+<%@ page import="ru.geekbrains.lesson3.CatalogDB" %>
+<%@ page import="ru.geekbrains.lesson3.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -43,7 +43,7 @@
             <c:url value="/product" var="productFormUrl">
                 <c:param name="add" value="add"/>
             </c:url>
-            <a class="btn btn-primary" href="${productFormUrl}">Add Product</a>
+            <a class="btn btn-primary" href="${productFormUrl}" >Add Product</a>
         </div>
 
         <div class="col-12">
@@ -78,6 +78,7 @@
                             <c:param name="id" value="${product.id}"/>
                             <c:param name="product" value="${product.product}"/>
                             <c:param name="dateOfAdding" value="${product.dateOfAdding}"/>
+                            <c:param name="photoUrl" value="${product.url}"/>
                         </c:url>
                         <a class="btn btn-success" href="${productUrl}"><i class="fas fa-edit"></i></a>
                         <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>

@@ -10,6 +10,18 @@
         <servlet-name>default</servlet-name>
         <url-pattern>*.css</url-pattern>
         <url-pattern>*.html</url-pattern>
+        <url-pattern>*.js</url-pattern>
+        <url-pattern>*.jpeg</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>faces-servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>faces-servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
 
     <context-param>
@@ -29,5 +41,11 @@
     <session-config>
         <session-timeout>10</session-timeout>
     </session-config>
+
+    <welcome-file-list>
+        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
 
 </web-app>

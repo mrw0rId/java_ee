@@ -29,8 +29,6 @@ public class ContextListener implements ServletContextListener {
             Connection connection = DriverManager.getConnection(jdbcConnectionString, username, password);
             context.setAttribute("jdbcConnection", connection);
 
-            CatalogDB catalogDB = new CatalogDB(connection);
-            context.setAttribute("catalogDB", catalogDB);
         } catch (SQLException e) {
             logger.error("Can't initialize JDBC connection", e);
         }

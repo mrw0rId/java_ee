@@ -1,16 +1,24 @@
 package ru.geekbrains.lesson3;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.servlet.ServletContext;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+@Named
+@ApplicationScoped
 public class CatalogDB {
 
     private final Connection conn;
+    @Inject
+    private ServletContext context;
 
-    public CatalogDB(Connection conn) throws SQLException {
-        this.conn = conn;
+    public CatalogDB() throws SQLException {
+        this.conn = (Connection)context.getAttribute("jdbcConnection");
         createTableIfNotExists(conn);
     }
 

@@ -11,6 +11,9 @@
 
     <modules>
         <module>first_java_ee_webapp</module>
+        <module>jsf-web-app</module>
     </modules>
+
+
 
 </project>
