@@ -9,16 +9,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-@Named
-@ApplicationScoped
+
 public class CatalogDB {
 
     private final Connection conn;
-    @Inject
-    private ServletContext context;
 
-    public CatalogDB() throws SQLException {
-        this.conn = (Connection)context.getAttribute("jdbcConnection");
+
+    public CatalogDB(Connection conn) throws SQLException {
+        this.conn = conn;
         createTableIfNotExists(conn);
     }
 

@@ -15,18 +15,20 @@ import java.sql.SQLException;
 public class ContextListener implements ServletContextListener {
 
     private static final Logger logger = LoggerFactory.getLogger(ContextListener.class);
+    private ServletContext context;
+    private Connection connection;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         logger.info("Initializing application");
 
-        ServletContext context = sce.getServletContext();
+        context = sce.getServletContext();
         String jdbcConnectionString = context.getInitParameter("jdbcConnectionString");
         String username = context.getInitParameter("dbUsername");
         String password = context.getInitParameter("dbPassword");
 
         try {
-            Connection connection = DriverManager.getConnection(jdbcConnectionString, username, password);
+            connection = DriverManager.getConnection(jdbcConnectionString, username, password);
             context.setAttribute("jdbcConnection", connection);
 
         } catch (SQLException e) {
@@ -37,12 +39,9 @@ public class ContextListener implements ServletContextListener {
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         logger.info("Closing JDBC connection");
-
-        ServletContext context = sce.getServletContext();
-        Connection conn = (Connection) context.getAttribute("jdbcConnection");
         try {
-            if (conn != null && !conn.isClosed()) {
-                conn.close();
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
             }
         } catch (SQLException e) {
             logger.error("Can't close JDBC connection", e);
