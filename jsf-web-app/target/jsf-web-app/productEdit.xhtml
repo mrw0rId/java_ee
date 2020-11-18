@@ -1,0 +1,84 @@
+<html lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:insert name="head">
+    <ui:include src="/head.xhtml">
+        <ui:param name="title" value="Product adding"/>
+    </ui:include>
+</ui:insert>
+<h:body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Product adding</a>
+
+<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"-->
+<!--            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#"></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row py-2">
+        <div class="col-12">
+            <h:form action="#" method="post">
+                <input type="hidden" id="id" name="id"/>
+                <div class="form-group">
+                    <h:outputLabel value="Product name"/>
+                    <h:inputText styleClass="form-control" id="product"
+                                 value="#{productController.product.product}"
+                                 placeholder="Enter product name"/>
+                    <h:outputLabel value="Manufacture date"/>
+                    <h:inputText p:type="date" styleClass="form-control" id="dateOfAdding"
+                                 value="#{productController.product.dateOfAdding}"
+                                 placeholder="Enter date">
+                        <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
+                    </h:inputText>
+                    <h:outputLabel value="Product category"/>
+                    <h:selectOneMenu styleClass="form-control" id="category" value="#{productController.product.category}">
+                        <f:selectItem id="cat1" itemLabel="Clothes" itemValue="1" />
+                        <f:selectItem id="cat2" itemLabel="Shoes" itemValue="2" />
+                        <f:selectItem id="cat3" itemLabel="Accessories" itemValue="3" />
+                        <f:selectItem id="cat4" itemLabel="Hats" itemValue="4" />
+                        <f:selectItem id="cat5" itemLabel="Handbags" itemValue="4" />
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Product photo url"/>
+                    <h:inputText styleClass="form-control" id="photoUrl"
+                                 value="#{productController.product.url}"
+                                 placeholder="Enter photu url"/>
+                    <h:outputLabel value="Product description"/>
+                    <h:inputText styleClass="form-control" id="productDescription"
+                                 value="#{productController.product.description}"
+                                 placeholder="Enter description"/>
+                </div>
+                <h:commandButton value="Submit" styleClass="btn btn-primary" action="#{productController.saveProduct}"/>
+            </h:form>
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</h:body>
+</html>
