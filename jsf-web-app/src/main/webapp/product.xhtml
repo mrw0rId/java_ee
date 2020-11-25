@@ -35,14 +35,21 @@
                 <f:facet name="header">Product name</f:facet>
                 <h:outputText styleClass="form-control" id="product"
                              value="#{productController.product.product}"/>
+
+                <f:facet name="header">Category</f:facet>
+                <h:outputText styleClass="form-control" id="category"
+                              value="#{empty productController.product.category ? 'no category' : productController.product.category.name}"/>
+
                 <f:facet name="header">Manufacture date</f:facet>
                 <h:outputText styleClass="form-control" id="dateOfAdding"
                               value="#{productController.product.dateOfAdding}">
                     <f:convertDateTime type="localDate" pattern="yyyy-MM-dd"/>
                 </h:outputText>
+
                 <h:graphicImage id="image" url="#{productController.product.url}" height="550px" width="550px"
                                 alt="Image not found">
                 </h:graphicImage>
+
                 <h:outputText styleClass="form-control" id="productDescription"
                               value="#{productController.product.description}">
                 </h:outputText>

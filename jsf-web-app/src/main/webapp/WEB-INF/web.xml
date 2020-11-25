@@ -24,20 +24,6 @@
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
 
-    <context-param>
-        <param-name>jdbcConnectionString</param-name>
-        <param-value>jdbc:mysql://localhost:3306/javaee_test_db?createDatabaseIfNotExist=true&amp;allowPublicKeyRetrieval=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC
-        </param-value>
-    </context-param>
-    <context-param>
-        <param-name>dbUsername</param-name>
-        <param-value>root</param-value>
-    </context-param>
-    <context-param>
-        <param-name>dbPassword</param-name>
-        <param-value>Twodaysago1!</param-value>
-    </context-param>
-
     <session-config>
         <session-timeout>10</session-timeout>
     </session-config>
