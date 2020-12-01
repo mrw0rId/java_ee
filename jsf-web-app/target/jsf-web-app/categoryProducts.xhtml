@@ -6,25 +6,20 @@
 
 <ui:insert name="head">
     <ui:include src="/head.xhtml">
-        <ui:param name="title" value="Catalog"/>
+        <ui:param name="title" value="Category products"/>
     </ui:include>
 </ui:insert>
 <h:body>
     <f:event listener="#{productController.preloadData}" type="preRenderView"/>
 
-    <img src="https://www.catalog.style/static/media/catalog_logo.2f0babb5.svg" width="350" height="80"/>
+    <img src="https://cutt.ly/phj2zsH" width="350" height="80"/>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Catalog:</a>
 
-        <!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"-->
-        <!--                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
-        <!--            <span class="navbar-toggler-icon"></span>-->
-        <!--        </button>-->
-
+        <a class="navbar-brand" href="#">Products of selected category:(#{productController.category.name})</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">product list</a>
+                    <a class="nav-link" href="#"></a>
                 </li>
             </ul>
         </div>
@@ -33,16 +28,14 @@
         <div class="container">
             <div class="row py-2">
                 <div class="col-12">
-                    <h:commandButton value="Add product" styleClass="btn btn-primary"
-                                     action="#{productController.addProduct}"/>
                 </div>
                 <div class="col-12">
-                    <h:dataTable value="#{productController.allProducts}" var="product"
+                    <h:dataTable value="#{productController.category.products}" var="product"
                                  styleClass="table table-bordered my-2">
                         <h:column>
                             <f:facet name="header">Prdouct</f:facet>
                             <h:commandButton value="#{product.product}"
-                                             action="#{productController.view(product)}"/>
+                                             action="#{productController.view(productController.productService.findById(product.id))}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">Manufacture date</f:facet>
@@ -56,15 +49,15 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">Category</f:facet>
-                            <h:commandButton value="#{empty product.categoryName ? 'no category' : product.categoryName}"
-                                             action="#{productController.categoryProducts(product.categoryId)}"/>
+                            <h:commandButton value="#{product.category.name}"
+                                             action="#{productController.categoryProducts(product.category.id)}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">Action</f:facet>
                             <h:commandButton value="Edit" styleClass="btn btn-success"
-                                             action="#{productController.editProduct(product)}"/>
+                                             action="#{productController.editProduct(productController.productService.findById(product.id))}"/>
                             <h:commandButton value="Delete" styleClass="btn btn-danger"
-                                             action="#{productController.deleteProduct(product)}">
+                                             action="#{productController.deleteProduct(productController.productService.findById(product.id))}">
                                 <f:ajax event="click" render="productForm"/>
                             </h:commandButton>
                             <h:commandButton value="Add to card" styleClass="btn btn-primary"

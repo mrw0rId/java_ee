@@ -1,10 +1,12 @@
 package ru.geekbrains.controller;
 
-import ru.geekbrains.lesson5.Orders;
-import ru.geekbrains.lesson5.OrdersTbl;
-import ru.geekbrains.lesson5.Product;
-import ru.geekbrains.lesson5.ProductTbl;
+import ru.geekbrains.entity.Orders;
+import ru.geekbrains.repositories.OrdersTbl;
+import ru.geekbrains.entity.Product;
+import ru.geekbrains.repositories.ProductTbl;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateful;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -18,11 +20,9 @@ public class OrderController implements Serializable {
 
     @Inject
     private CartController cartController;
-    @Inject
-    private ProductController productController;
-    @Inject
+    @EJB
     private ProductTbl productTbl;
-    @Inject
+    @EJB
     private OrdersTbl ordersTbl;
 
     private List<Product> cartProducts;
@@ -33,10 +33,10 @@ public class OrderController implements Serializable {
         cartController.emptyCart();
         Orders order = new Orders();
         ordersTbl.insert(order);
-        for (Product p:cartProducts) {
-            p.setOrders(order);
-            productTbl.update(p);
-        }
+//        for (Product p:cartProducts) {
+////            p.setOrders(order);
+//            productTbl.update(p);
+//        }
         return "/orders.xhtml?faces-redirect=true";
     }
 

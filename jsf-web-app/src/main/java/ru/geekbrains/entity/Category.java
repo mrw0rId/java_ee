@@ -1,24 +1,25 @@
-package ru.geekbrains.lesson5;
+package ru.geekbrains.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name = "orders")
-public class Orders {
+@Table(name = "category")
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL,orphanRemoval = true)
+    @NotNull
+    @Column(nullable = false)
+    private String name;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Product> products;
 
-    public Orders() {
-    }
-    public Orders(List<Product> products) {
-        this.products = products;
+    public Category() {
     }
 
     public Long getId() {
@@ -26,6 +27,12 @@ public class Orders {
     }
     public void setId(Long id) {
         this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
     public List<Product> getProducts() {
         return products;

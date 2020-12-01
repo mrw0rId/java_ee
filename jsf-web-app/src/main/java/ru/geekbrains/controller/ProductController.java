@@ -1,10 +1,15 @@
 package ru.geekbrains.controller;
 
-import ru.geekbrains.lesson5.*;
+import ru.geekbrains.entity.Category;
+import ru.geekbrains.entity.Orders;
+import ru.geekbrains.repositories.CategoryTbl;
+import ru.geekbrains.repositories.OrdersTbl;
+import ru.geekbrains.services.ProductRepr;
+import ru.geekbrains.services.ProductServiceLocal;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.event.ComponentSystemEvent;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -13,28 +18,29 @@ import java.util.List;
 @SessionScoped
 public class ProductController implements Serializable {
 
-    @Inject
-    private ProductTbl productTbl;
-    @Inject
+    @EJB
+    private ProductServiceLocal productService;
+    @EJB
     private CategoryTbl categoryTbl;
-    @Inject
+    @EJB
     private OrdersTbl ordersTbl;
 
 
-    private Product product;
-    private List<Product> products;
+    private ProductRepr product;
+    private Category category;
+    private List<ProductRepr> products;
     private List<Category> categories;
     private List<Orders> orders;
 
     //Preloading injected tables
     public void preloadData(ComponentSystemEvent componentSystemEvent) {
-        this.products = productTbl.findAll();
+        this.products = productService.findAll();
         this.categories = categoryTbl.findAll();
-        this.orders = ordersTbl.findAll();
+//        this.orders = ordersTbl.findAll();
     }
 
     //Getters and Setters
-    public List<Product> getAllProducts(){
+    public List<ProductRepr> getAllProducts(){
         return products;
     }
     public List<Category> getAllCategories(){
@@ -43,13 +49,24 @@ public class ProductController implements Serializable {
     public List<Orders> getAllOrders(){
         return orders;
     }
-    public Product getProduct() {
+    public ProductRepr getProduct() {
         return product;
     }
-    public void setProduct(Product product) {
+    public void setProduct(ProductRepr product) {
         this.product = product;
     }
-    public Category getCategory(Integer id){
+    public Category getCategory() {
+        return category;
+    }
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+    public ProductServiceLocal getProductService() {
+        return productService;
+    }
+
+    //Converter method
+    public Category getCategori(Integer id){
         if (id == null){
             throw new IllegalArgumentException("no id provided");
         }
@@ -62,32 +79,37 @@ public class ProductController implements Serializable {
     }
 
     //DML block
-    public String editProduct(Product product) {
+    public String editProduct(ProductRepr product) {
         this.product = product;
         return "/productEdit.xhtml?faces-redirect=true";
     }
 
-    public String deleteProduct(Product product){
-        productTbl.delete(product.getId());
+    public String deleteProduct(ProductRepr product){
+        productService.delete(product.getId());
         return "/catalog.xhtml?faces-redirect=true";
     }
 
     public String saveProduct(){
         if(product.getId() == null){
-            productTbl.insert(product);
+            productService.insert(product);
         } else{
-        productTbl.update(product);
+        productService.update(product);
         }
         return "/catalog.xhtml?faces-redirect=true";
     }
 
     public String addProduct() {
-        this.product = new Product();
+        this.product = new ProductRepr();
         return "/productEdit.xhtml?faces-redirect=true";
     }
 
-    public String view(Product product) {
+    public String view(ProductRepr product) {
         this.product = product;
         return "/product.xhtml?faces-redirect=true";
+    }
+
+    public String categoryProducts(Long categoryId) {
+        this.category = categoryTbl.findById(categoryId);
+        return "/categoryProducts.xhtml?faces-redirect=true";
     }
 }

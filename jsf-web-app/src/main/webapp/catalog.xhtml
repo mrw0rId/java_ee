@@ -55,6 +55,11 @@
                             </h:graphicImage>
                         </h:column>
                         <h:column>
+                            <f:facet name="header">Category</f:facet>
+                            <h:commandButton value="#{empty product.categoryName ? 'no category' : product.categoryName}"
+                                             action="#{productController.categoryProducts(product.categoryId)}"/>
+                        </h:column>
+                        <h:column>
                             <f:facet name="header">Action</f:facet>
                             <h:commandButton value="Edit" styleClass="btn btn-success"
                                              action="#{productController.editProduct(product)}"/>

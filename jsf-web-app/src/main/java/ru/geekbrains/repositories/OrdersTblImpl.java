@@ -1,35 +1,36 @@
-package ru.geekbrains.lesson5;
+package ru.geekbrains.repositories;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
+import ru.geekbrains.entity.Orders;
+
+import javax.ejb.Stateful;
+import javax.ejb.TransactionAttribute;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
+import java.io.Serializable;
 import java.util.List;
 
-@Named
-@ApplicationScoped
-public class OrdersTbl {
+@Stateful
+public class OrdersTblImpl implements OrdersTbl, Serializable {
 
     @PersistenceContext(unitName = "ds")
     private EntityManager em;
 
-    @Transactional
+    @TransactionAttribute
     public void insert(Orders orders){
         em.persist(orders);
     }
-    @Transactional
+    @TransactionAttribute
     public void update(Orders orders){
         em.merge(orders);
     }
-    @Transactional
+    @TransactionAttribute
     public void delete(long id) {
         Orders orders = em.find(Orders.class, id);
         if(orders!=null){
             em.remove(orders);
         }
     }
-    @Transactional
+    @TransactionAttribute
     public void deleteAll() {
         em.createQuery("delete from Orders o", Orders.class).getResultList();
     }

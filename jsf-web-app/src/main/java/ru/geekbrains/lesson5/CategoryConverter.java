@@ -1,7 +1,7 @@
 package ru.geekbrains.lesson5;
 
-import org.hibernate.exception.SQLGrammarException;
 import ru.geekbrains.controller.ProductController;
+import ru.geekbrains.entity.Category;
 
 import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
@@ -22,7 +22,7 @@ public class CategoryConverter implements Converter {
                         .createValueExpression(ctx.getELContext(),
                                 "#{productController}", ProductController.class);
         ProductController pc = (ProductController) vex.getValue(ctx.getELContext());
-        Category c = pc.getCategory(Integer.valueOf(categoryId));
+        Category c = pc.getCategori(Integer.valueOf(categoryId));
         if(c!=null){
             return c;
         } else throw new NullPointerException("object is null(asObject)");

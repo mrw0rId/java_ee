@@ -1,8 +1,12 @@
 package ru.geekbrains.controller;
 
-import ru.geekbrains.lesson5.Product;
+import ru.geekbrains.entity.Product;
+import ru.geekbrains.services.ProductRepr;
+import ru.geekbrains.services.ProductServiceLocal;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.*;
@@ -10,6 +14,9 @@ import java.util.*;
 @Named
 @SessionScoped
 public class CartController implements Serializable {
+
+    @EJB
+    private ProductServiceLocal productService;
 
 
     private Map<Integer, Product> cart = new HashMap<>();
@@ -29,9 +36,9 @@ public class CartController implements Serializable {
         return product;
     }
 
-    public String setCart(Integer id, Product product) {
+    public String setCart(Integer id, ProductRepr product) {
         keyList.add(id);
-        cart.put(id, product);
+        cart.put(id, productService.convert(product));
         return "/catalog.xhtml?faces-redirect=true";
     }
 
@@ -45,9 +52,9 @@ public class CartController implements Serializable {
         return "/cart.xhtml?faces-redirect=true";
     }
 
-    public String emptyCart() {
+    public void emptyCart() {
         cart.clear();
         keyList.clear();
-        return "/cart.xhtml?faces-redirect=true";
+//        return "/cart.xhtml?faces-redirect=true";
     }
 }

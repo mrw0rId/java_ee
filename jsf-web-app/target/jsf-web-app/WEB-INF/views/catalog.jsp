@@ -1,5 +1,5 @@
-<%@ page import="ru.geekbrains.lesson5.ProductTbl" %>
-<%@ page import="ru.geekbrains.lesson5.Product" %>
+<%@ page import="ru.geekbrains.repositories.ProductTblImpl" %>
+<%@ page import="ru.geekbrains.entity.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

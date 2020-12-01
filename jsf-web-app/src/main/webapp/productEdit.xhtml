@@ -44,14 +44,15 @@
                             <h:message for="dateOfAdding" style="color: red"/>
                         </h:inputText>
 
-                        <h:outputLabel value="Product category"/>
-                        <h:selectOneMenu styleClass="form-control" id="category"
-                                         value="#{productController.product.category}" converter="categoryConverter">
-                            <f:selectItem itemLabel="#{empty productController.product.category ? 'Select' : productController.product.category.name}"
-                                          itemValue="#{productController.product.category}" noSelectionOption="true"/>
-                            <f:selectItems value="#{productController.allCategories}" var="selectedCategory"
-                                           itemLabel="#{selectedCategory.name}" itemValue="#{selectedCategory}" />
-                        </h:selectOneMenu>
+                        <h:outputLabel value="Category"/>
+                        <h:selectOneListbox size="1" styleClass="form-control" id="category"
+                                            value="#{productController.product.categoryId}">
+                            <f:selectItems value="#{productController.allCategories}"
+                                           var="category"
+                                           itemValue="#{category.id}"
+                                           itemLabel="#{category.name}"
+                                           itemLabelEscaped="true"/>
+                        </h:selectOneListbox>
 
                         <h:outputLabel value="Product photo url"/>
                         <h:inputText styleClass="form-control" id="photoUrl"

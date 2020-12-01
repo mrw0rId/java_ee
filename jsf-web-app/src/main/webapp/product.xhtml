@@ -6,7 +6,7 @@
 
 <ui:insert name="head">
     <ui:include src="/head.xhtml">
-        <ui:param name="title" value="Catalog"/>
+        <ui:param name="title" value="Product"/>
     </ui:include>
 </ui:insert>
 
@@ -38,7 +38,7 @@
 
                 <f:facet name="header">Category</f:facet>
                 <h:outputText styleClass="form-control" id="category"
-                              value="#{empty productController.product.category ? 'no category' : productController.product.category.name}"/>
+                              value="#{empty productController.product.categoryName ? 'no category' : productController.product.categoryName}"/>
 
                 <f:facet name="header">Manufacture date</f:facet>
                 <h:outputText styleClass="form-control" id="dateOfAdding"
