@@ -12,9 +12,10 @@
 </ui:insert>
 <h:body>
     <f:event listener="#{productController.preloadData}" type="preRenderView"/>
+
+    <img src="https://cutt.ly/uhztzut" width="80" height="80"/>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Product adding</a>
-
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
@@ -29,6 +30,9 @@
             <div class="col-12">
                 <h:form action="#" method="post">
                     <input type="hidden" id="id" name="id"/>
+                    <div class="col-12">
+                        <h:link styleClass="btn btn-primary" value="Back to catalog" outcome="catalog" />
+                    </div>
                     <div class="form-group">
                         <h:outputLabel value="Product name"/>
                         <h:inputText styleClass="form-control" id="product"

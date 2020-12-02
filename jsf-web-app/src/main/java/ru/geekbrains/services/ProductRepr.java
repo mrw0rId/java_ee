@@ -36,8 +36,8 @@ public class ProductRepr implements Serializable {
         this.url = url;
         this.categoryId = category != null ? category.getId() : null;
         this.categoryName = category != null ? category.getName() : null;
-//        this.ordersId = orders != null ? orders.getId() : null;
         this.description = description;
+//        this.ordersId = orders != null ? orders.getId() : null;
     }
 //    public ProductRepr(String product, LocalDate dateOfAdding, String url, Long categoryId, Long ordersId) {
 //        this.product = product;

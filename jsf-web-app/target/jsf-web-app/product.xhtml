@@ -11,7 +11,7 @@
 </ui:insert>
 
 <h:body>
-    <img src="https://www.catalog.style/static/media/catalog_logo.2f0babb5.svg" width="350" height="80"/>
+    <img src="https://cutt.ly/YhzypWZ" width="80" height="80"/>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Product:</a>
 
@@ -31,7 +31,9 @@
     <h:form id="productForm">
         <div class="container">
             <div class="row py-2">
-                <h:link styleClass="btn btn-primary" value="Back to catalog" outcome="catalog" />
+                <div class="col-12">
+                    <h:link styleClass="btn btn-primary" value="Back to catalog" outcome="catalog" />
+                </div>
                 <f:facet name="header">Product name</f:facet>
                 <h:outputText styleClass="form-control" id="product"
                              value="#{productController.product.product}"/>

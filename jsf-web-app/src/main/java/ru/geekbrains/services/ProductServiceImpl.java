@@ -44,17 +44,18 @@ public class ProductServiceImpl implements ProductServiceLocal {
         productTbl.update(new Product(productRepr.getId(), productRepr.getProduct(), productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(), category));
     }
 
+    @TransactionAttribute
+    @Override
+    public void delete(long id) {
+        productTbl.delete(id);
+    }
+
+
     @Override
     public Product convert(ProductRepr productRepr){
         Category category = categoryTbl.findById(productRepr.getCategoryId());
 //        Orders order = ordersTbl.findById(productRepr.getOrdersId());
         return new Product(productRepr.getId(), productRepr.getProduct(), productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(), category);
-    }
-
-    @TransactionAttribute
-    @Override
-    public void delete(long id) {
-        productTbl.delete(id);
     }
 
     @Override

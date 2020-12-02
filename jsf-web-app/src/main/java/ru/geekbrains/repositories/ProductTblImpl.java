@@ -25,7 +25,8 @@ public class ProductTblImpl implements ProductTbl {
     public void delete(long id) {
         Product product = em.find(Product.class, id);
         if(product!=null){
-            em.remove(product);
+//            em.remove(product);
+            em.createQuery("delete from Product p where p.id=:id").setParameter("id",id).executeUpdate();
         }
     }
 
