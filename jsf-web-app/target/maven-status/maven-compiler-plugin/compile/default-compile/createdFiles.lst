@@ -1,0 +1,16 @@
+ru\geekbrains\lesson5\CategoryConverter.class
+ru\geekbrains\services\ProductRepr.class
+ru\geekbrains\repositories\ProductTblImpl.class
+ru\geekbrains\controller\ProductController.class
+ru\geekbrains\repositories\CategoryTbl.class
+ru\geekbrains\entity\Product.class
+ru\geekbrains\repositories\ProductTbl.class
+ru\geekbrains\repositories\OrdersTblImpl.class
+ru\geekbrains\entity\Category.class
+ru\geekbrains\repositories\CategoryTblImpl.class
+ru\geekbrains\entity\Orders.class
+ru\geekbrains\repositories\OrdersTbl.class
+ru\geekbrains\services\ProductServiceImpl.class
+ru\geekbrains\controller\OrderController.class
+ru\geekbrains\controller\CartController.class
+ru\geekbrains\services\ProductServiceLocal.class
