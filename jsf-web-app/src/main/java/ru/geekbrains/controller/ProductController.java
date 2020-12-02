@@ -36,7 +36,7 @@ public class ProductController implements Serializable {
     public void preloadData(ComponentSystemEvent componentSystemEvent) {
         this.products = productService.findAll();
         this.categories = categoryTbl.findAll();
-//        this.orders = ordersTbl.findAll();
+        this.orders = ordersTbl.findAll();
     }
 
     //Getters and Setters

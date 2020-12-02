@@ -27,7 +27,8 @@ public class OrdersTblImpl implements OrdersTbl, Serializable {
     public void delete(long id) {
         Orders orders = em.find(Orders.class, id);
         if(orders!=null){
-            em.remove(orders);
+//            em.remove(orders);
+            em.createQuery("delete from Orders o where o.id=:id").setParameter("id",id).executeUpdate();
         }
     }
     @TransactionAttribute

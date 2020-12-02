@@ -25,11 +25,11 @@ public class ProductRepr implements Serializable {
 
     private String categoryName;
 
-//    private Long ordersId;
+    private Long ordersId;
 
     public ProductRepr() {
     }
-    public ProductRepr(Long id, String product, LocalDate dateOfAdding, String url, String description, Category category) {
+    public ProductRepr(Long id, String product, LocalDate dateOfAdding, String url, String description, Category category, Orders orders) {
         this.id = id;
         this.product = product;
         this.dateOfAdding = dateOfAdding;
@@ -37,7 +37,7 @@ public class ProductRepr implements Serializable {
         this.categoryId = category != null ? category.getId() : null;
         this.categoryName = category != null ? category.getName() : null;
         this.description = description;
-//        this.ordersId = orders != null ? orders.getId() : null;
+        this.ordersId = orders != null ? orders.getId() : null;
     }
 //    public ProductRepr(String product, LocalDate dateOfAdding, String url, Long categoryId, Long ordersId) {
 //        this.product = product;
@@ -74,12 +74,12 @@ public class ProductRepr implements Serializable {
 //        this.dateOfAdding = LocalDate.now();
 //    }
 
-//    public Long getOrdersId() {
-//    return ordersId;
-//}
-//    public void setOrdersId(Long ordersId) {
-//        this.ordersId = ordersId;
-//    }
+    public Long getOrdersId() {
+    return ordersId;
+}
+    public void setOrdersId(Long ordersId) {
+        this.ordersId = ordersId;
+    }
     public String getCategoryName() {
         return categoryName;
     }

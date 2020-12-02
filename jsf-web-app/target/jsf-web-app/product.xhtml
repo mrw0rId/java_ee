@@ -30,10 +30,10 @@
     </nav>
     <h:form id="productForm">
         <div class="container">
+            <div class="col-12">
+                <h:link styleClass="btn btn-primary" value="Back to catalog" outcome="catalog" />
+            </div>
             <div class="row py-2">
-                <div class="col-12">
-                    <h:link styleClass="btn btn-primary" value="Back to catalog" outcome="catalog" />
-                </div>
                 <f:facet name="header">Product name</f:facet>
                 <h:outputText styleClass="form-control" id="product"
                              value="#{productController.product.product}"/>

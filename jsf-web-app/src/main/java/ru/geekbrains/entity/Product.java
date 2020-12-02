@@ -25,19 +25,19 @@ public class Product {
     @ManyToOne
     private Category category;
 
-//    @ManyToOne
-//    private Orders orders;
+    @ManyToOne
+    private Orders orders;
 
     public Product() {
     }
-    public Product(Long id, String product,LocalDate dateOfAdding, String url, String description, Category category) {
+    public Product(Long id, String product,LocalDate dateOfAdding, String url, String description, Category category, Orders orders) {
         this.id = id;
         this.product = product;
         this.dateOfAdding = dateOfAdding;
         this.url = url;
         this.category = category;
-//        this.orders = orders;
         this.description = description;
+        this.orders = orders;
     }
 //    public Product(String product,LocalDate dateOfAdding, String url, Category category, Orders orders) {
 //        this.product = product;
@@ -74,12 +74,12 @@ public class Product {
 //        this.dateOfAdding = LocalDate.now();
 //    }
 
-//    public Orders getOrders() {
-//        return orders;
-//    }
-//    public void setOrders(Orders orders) {
-//        this.orders = orders;
-//    }
+    public Orders getOrders() {
+        return orders;
+    }
+    public void setOrders(Orders orders) {
+        this.orders = orders;
+    }
     public Category getCategory() {
         return category;
     }

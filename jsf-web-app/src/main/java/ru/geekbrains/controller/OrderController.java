@@ -33,13 +33,25 @@ public class OrderController implements Serializable {
         cartController.emptyCart();
         Orders order = new Orders();
         ordersTbl.insert(order);
-//        for (Product p:cartProducts) {
-////            p.setOrders(order);
-//            productTbl.update(p);
-//        }
+        for (Product p:cartProducts) {
+            p.setOrders(order);
+            productTbl.update(p);
+        }
         return "/orders.xhtml?faces-redirect=true";
     }
-
+    public String removeProduct(Product product){
+        product.setOrders(null);
+        productTbl.update(product);
+        return "/orders.xhtml?faces-redirect=true";
+    }
+    public String delete(long id){
+        ordersTbl.delete(id);
+        return "/orders.xhtml?faces-redirect=true";
+    }
+    public String deleteAll(){
+        ordersTbl.deleteAll();
+        return "/orders.xhtml?faces-redirect=true";
+    }
     public List<Product> getAllCartProducts() {
         return cartProducts;
     }

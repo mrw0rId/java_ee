@@ -41,8 +41,7 @@ public class ProductTblImpl implements ProductTbl {
     @Override
     public ProductRepr findToDoReprById(long id) {
         return em.createQuery("select new ru.geekbrains.services.ProductRepr(p.id, p.product, p.dateOfAdding, " +
-                "p.url, p.description, p.category) " +
-                "from Product p where p.id = :id", ProductRepr.class)
+                "p.url, p.description, c, o) from Product p left join p.category c left join p.orders o where p.id = :id", ProductRepr.class)
                 .setParameter("id",id)
                 .getSingleResult();
     }
@@ -50,8 +49,8 @@ public class ProductTblImpl implements ProductTbl {
     @Override
     public List<ProductRepr> findAllToDoRepr() {
         return em.createQuery("select new ru.geekbrains.services.ProductRepr(p.id, p.product, p.dateOfAdding, " +
-                "p.url, p.description, p.category) " +
-                "from Product p", ProductRepr.class)
+                "p.url, p.description, c, o) " +
+                "from Product p left join p.category c left join p.orders o", ProductRepr.class)
                 .getResultList();
     }
 }

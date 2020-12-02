@@ -31,17 +31,29 @@ public class ProductServiceImpl implements ProductServiceLocal {
     @TransactionAttribute
     @Override
     public void insert(ProductRepr productRepr) {
-        Category category = categoryTbl.findById(productRepr.getCategoryId());
-//        Orders order = ordersTbl.findById(productRepr.getOrdersId());
-        productTbl.insert(new Product(productRepr.getId(), productRepr.getProduct(), productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(), category));
+        Category category;
+        try{
+            category = categoryTbl.findById(productRepr.getCategoryId());
+        }catch (NullPointerException e){category = null;}
+        Orders order;
+        try{
+            order = ordersTbl.findById(productRepr.getOrdersId());
+        }catch (NullPointerException e){order = null;}
+        productTbl.insert(new Product(productRepr.getId(), productRepr.getProduct(), productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(), category, order));
     }
 
     @TransactionAttribute
     @Override
     public void update(ProductRepr productRepr) {
-        Category category = categoryTbl.findById(productRepr.getCategoryId());
-//        Orders order = ordersTbl.findById(productRepr.getOrdersId());
-        productTbl.update(new Product(productRepr.getId(), productRepr.getProduct(), productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(), category));
+        Category category;
+        try{
+            category = categoryTbl.findById(productRepr.getCategoryId());
+        }catch (NullPointerException e){category = null;}
+        Orders order;
+        try{
+            order = ordersTbl.findById(productRepr.getOrdersId());
+        }catch (NullPointerException e){order = null;}
+        productTbl.update(new Product(productRepr.getId(), productRepr.getProduct(), productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(), category, order));
     }
 
     @TransactionAttribute
@@ -53,9 +65,15 @@ public class ProductServiceImpl implements ProductServiceLocal {
 
     @Override
     public Product convert(ProductRepr productRepr){
-        Category category = categoryTbl.findById(productRepr.getCategoryId());
-//        Orders order = ordersTbl.findById(productRepr.getOrdersId());
-        return new Product(productRepr.getId(), productRepr.getProduct(), productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(), category);
+        Category category;
+        try{
+            category = categoryTbl.findById(productRepr.getCategoryId());
+        }catch (NullPointerException e){category = null;}
+        Orders order;
+        try{
+            order = ordersTbl.findById(productRepr.getOrdersId());
+        }catch (NullPointerException e){order = null;}
+        return new Product(productRepr.getId(), productRepr.getProduct(), productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(), category, order);
     }
 
     @Override
