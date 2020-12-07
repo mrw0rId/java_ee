@@ -3,10 +3,13 @@ D:\geekbrains\javaEE\1\jsf-web-app\src\main\java\ru\geekbrains\repositories\Cate
 D:\geekbrains\javaEE\1\jsf-web-app\src\main\java\ru\geekbrains\services\ProductRepr.java
 D:\geekbrains\javaEE\1\jsf-web-app\src\main\java\ru\geekbrains\lesson5\CategoryConverter.java
 D:\geekbrains\javaEE\1\jsf-web-app\src\main\java\ru\geekbrains\repositories\CategoryTbl.java
+D:\geekbrains\javaEE\1\jsf-web-app\src\main\java\ru\geekbrains\rest\JaxRsApplication.java
+D:\geekbrains\javaEE\1\jsf-web-app\src\main\java\ru\geekbrains\services\CartService.java
 D:\geekbrains\javaEE\1\jsf-web-app\src\main\java\ru\geekbrains\repositories\OrdersTblImpl.java
 D:\geekbrains\javaEE\1\jsf-web-app\src\main\java\ru\geekbrains\entity\Category.java
 D:\geekbrains\javaEE\1\jsf-web-app\src\main\java\ru\geekbrains\entity\Orders.java
 D:\geekbrains\javaEE\1\jsf-web-app\src\main\java\ru\geekbrains\repositories\ProductTblImpl.java
+D:\geekbrains\javaEE\1\jsf-web-app\src\main\java\ru\geekbrains\rest\ProductServiceRs.java
 D:\geekbrains\javaEE\1\jsf-web-app\src\main\java\ru\geekbrains\repositories\ProductTbl.java
 D:\geekbrains\javaEE\1\jsf-web-app\src\main\java\ru\geekbrains\entity\Product.java
 D:\geekbrains\javaEE\1\jsf-web-app\src\main\java\ru\geekbrains\controller\CartController.java

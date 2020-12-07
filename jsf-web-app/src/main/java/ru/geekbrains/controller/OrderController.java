@@ -29,7 +29,7 @@ public class OrderController implements Serializable {
     private List<Orders> orders = new ArrayList<>();
 
     public String checkout(){
-        cartProducts = new ArrayList<>(cartController.getCart().values());
+        cartProducts = cartController.getCartProducts();
         cartController.emptyCart();
         Orders order = new Orders();
         ordersTbl.insert(order);

@@ -51,12 +51,14 @@
                             </h:column>
                         </h:column>
                     </h:dataTable>
+                    <h:form>
                     <h:commandButton value="Buy All" styleClass="btn btn-success"
                                      action="#"/>
                     <h:commandButton value="Delete All" styleClass="btn btn-danger"
                                      action="#{orderController.deleteAll}">
                         <f:ajax event="click" render="orderForm"/>
                     </h:commandButton>
+                    </h:form>
                 </div>
             </div>
         </div>

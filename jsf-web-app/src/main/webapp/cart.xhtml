@@ -18,18 +18,18 @@
         <div class="container">
             <div class="row py-2">
                 <div class="col-12">
-                    <h:dataTable value="#{cartController.cart.entrySet().toArray()}" var="entry" styleClass="table table-bordered my-2">
+                    <h:dataTable value="#{cartController.cartProducts}" var="product" styleClass="table table-bordered my-2">
                         <h:column>
                             <f:facet name="header">Product</f:facet>
-                            <h:commandButton value="#{entry.value.product}"
-                                             action="#{productController.view(productController.productService.findById(entry.value.id))}">
+                            <h:commandButton value="#{product.product}"
+                                             action="#{productController.view(productController.productService.findById(product.id))}">
                             </h:commandButton>
                         </h:column>
 
                         <h:column>
                             <f:facet name="header">Action</f:facet>
                             <h:commandButton value="Delete" styleClass="btn btn-danger"
-                                             action="#{cartController.removeItem(entry.key)}">
+                                             action="#{cartController.removeItem(product.id)}">
                                 <f:ajax event="click" render="cartForm"/>
                             </h:commandButton>
                         </h:column>

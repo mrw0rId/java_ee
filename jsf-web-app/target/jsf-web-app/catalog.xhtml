@@ -64,7 +64,7 @@
                                 <f:ajax event="click" render="productForm"/>
                             </h:commandButton>
                             <h:commandButton value="Add to card" styleClass="btn btn-primary"
-                                             action="#{cartController.setCart(product.id,product)}">
+                                             action="#{cartController.add(product.id,product)}">
                                 <f:ajax event="click" render="productForm"/>
                             </h:commandButton>
                         </h:column>

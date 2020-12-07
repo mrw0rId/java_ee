@@ -19,8 +19,6 @@ public interface ProductServiceLocal {
 
     List<ProductRepr> findAll();
 
-    Future<ProductRepr> findByIdAsync(long id);
-
     Product convert(ProductRepr productRepr);
 }
 

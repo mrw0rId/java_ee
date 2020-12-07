@@ -3,6 +3,7 @@ package ru.geekbrains.repositories;
 import ru.geekbrains.entity.Orders;
 
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,13 +28,12 @@ public class OrdersTblImpl implements OrdersTbl, Serializable {
     public void delete(long id) {
         Orders orders = em.find(Orders.class, id);
         if(orders!=null){
-//            em.remove(orders);
-            em.createQuery("delete from Orders o where o.id=:id").setParameter("id",id).executeUpdate();
+            em.remove(orders);
         }
     }
     @TransactionAttribute
     public void deleteAll() {
-        em.createQuery("delete from Orders o", Orders.class).getResultList();
+        em.createQuery("delete from Orders o").executeUpdate();
     }
 
     public Orders findById(long id){

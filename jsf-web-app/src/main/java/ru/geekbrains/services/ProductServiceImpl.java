@@ -9,6 +9,7 @@ import ru.geekbrains.entity.Product;
 import ru.geekbrains.repositories.CategoryTbl;
 import ru.geekbrains.repositories.OrdersTbl;
 import ru.geekbrains.repositories.ProductTbl;
+import ru.geekbrains.rest.ProductServiceRs;
 
 
 import javax.ejb.*;
@@ -17,43 +18,46 @@ import java.util.List;
 import java.util.concurrent.Future;
 
 @Stateless
-public class ProductServiceImpl implements ProductServiceLocal {
+public class ProductServiceImpl implements ProductServiceLocal, ProductServiceRs {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 
     @EJB
     private ProductTbl productTbl;
     @EJB
-    private CategoryTbl categoryTbl;
+    private static CategoryTbl categoryTbl;
     @EJB
-    private OrdersTbl ordersTbl;
+    private static OrdersTbl ordersTbl;
 
-    @TransactionAttribute
-    @Override
-    public void insert(ProductRepr productRepr) {
+    public static Category isProductReprCategoryNull(ProductRepr productRepr){
         Category category;
         try{
             category = categoryTbl.findById(productRepr.getCategoryId());
         }catch (NullPointerException e){category = null;}
+        return category;
+    }
+    public static Orders isProductReprOrderNull(ProductRepr productRepr){
         Orders order;
         try{
             order = ordersTbl.findById(productRepr.getOrdersId());
         }catch (NullPointerException e){order = null;}
-        productTbl.insert(new Product(productRepr.getId(), productRepr.getProduct(), productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(), category, order));
+        return order;
+    }
+
+    @TransactionAttribute
+    @Override
+    public void insert(ProductRepr productRepr) {
+        productTbl.insert(new Product(productRepr.getId(), productRepr.getProduct(),
+                productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(),
+                isProductReprCategoryNull(productRepr), isProductReprOrderNull(productRepr)));
     }
 
     @TransactionAttribute
     @Override
     public void update(ProductRepr productRepr) {
-        Category category;
-        try{
-            category = categoryTbl.findById(productRepr.getCategoryId());
-        }catch (NullPointerException e){category = null;}
-        Orders order;
-        try{
-            order = ordersTbl.findById(productRepr.getOrdersId());
-        }catch (NullPointerException e){order = null;}
-        productTbl.update(new Product(productRepr.getId(), productRepr.getProduct(), productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(), category, order));
+        productTbl.update(new Product(productRepr.getId(), productRepr.getProduct(),
+                productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(),
+                isProductReprCategoryNull(productRepr), isProductReprOrderNull(productRepr)));
     }
 
     @TransactionAttribute
@@ -65,15 +69,9 @@ public class ProductServiceImpl implements ProductServiceLocal {
 
     @Override
     public Product convert(ProductRepr productRepr){
-        Category category;
-        try{
-            category = categoryTbl.findById(productRepr.getCategoryId());
-        }catch (NullPointerException e){category = null;}
-        Orders order;
-        try{
-            order = ordersTbl.findById(productRepr.getOrdersId());
-        }catch (NullPointerException e){order = null;}
-        return new Product(productRepr.getId(), productRepr.getProduct(), productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(), category, order);
+        return new Product(productRepr.getId(), productRepr.getProduct(),
+                productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(),
+                isProductReprCategoryNull(productRepr), isProductReprOrderNull(productRepr));
     }
 
     @Override
@@ -86,14 +84,14 @@ public class ProductServiceImpl implements ProductServiceLocal {
         return productTbl.findAllToDoRepr();
     }
 
-    @Asynchronous
-    @Override
-    public Future<ProductRepr> findByIdAsync(long id) {
-        try {
-            Thread.sleep(15000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return new AsyncResult<>(productTbl.findToDoReprById(id));
-    }
+//    @Asynchronous
+//    @Override
+//    public Future<ProductRepr> findByIdAsync(long id) {
+//        try {
+//            Thread.sleep(15000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        return new AsyncResult<>(productTbl.findToDoReprById(id));
+//    }
 }
