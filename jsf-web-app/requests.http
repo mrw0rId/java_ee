@@ -1,0 +1,35 @@
+GET http://127.0.0.1:8080/jsf-web-app/api/v1/product/all
+
+###
+
+GET http://127.0.0.1:8080/jsf-web-app/api/v1/product/6
+
+###
+
+POST http://127.0.0.1:8080/jsf-web-app/api/v1/product
+Content-Type: application/json
+
+{
+  "categoryId": 1,
+  "categoryName": "Clothes",
+  "dateOfAdding": "2020-12-01",
+  "description": "That product has benn inserted throw REST http doc",
+  "product": "Test"
+}
+
+###
+
+PUT http://127.0.0.1:8080/jsf-web-app/api/v1/product
+Content-Type: application/json
+
+{
+  "categoryId": 2,
+  "dateOfAdding": "2020-12-01",
+  "description": "That product has benn inserted throw REST http doc",
+  "id": 18,
+  "product": "Test"
+}
+
+###
+
+DELETE http://127.0.0.1:8080/jsf-web-app/api/v1/product/19
