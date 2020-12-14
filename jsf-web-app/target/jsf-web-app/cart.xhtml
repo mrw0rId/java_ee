@@ -4,16 +4,16 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<ui:insert name="head">
-    <ui:include src="/head.xhtml">
-        <ui:param name="title" value="Cart"/>
-    </ui:include>
-</ui:insert>
 <h:body>
-    <img src="https://cutt.ly/Xg7ssB1" width="80" height="80"/>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Cart list:</a>
-    </nav>
+
+    <h:graphicImage id="cartImg" url="https://cutt.ly/Xg7ssB1" height="80px" width="80px"/>
+
+    <ui:insert name="head">
+        <ui:include src="/head.xhtml">
+            <ui:param name="title" value="Cart"/>
+        </ui:include>
+    </ui:insert>
+
     <h:form id="cartForm">
         <div class="container">
             <div class="row py-2">

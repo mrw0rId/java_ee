@@ -18,46 +18,48 @@ import java.util.List;
 import java.util.concurrent.Future;
 
 @Stateless
-public class ProductServiceImpl implements ProductServiceLocal, ProductServiceRs {
+public class ProductServiceImpl implements ProductServiceLocal {
 
     private static final Logger logger = LoggerFactory.getLogger(ProductServiceImpl.class);
 
     @EJB
     private ProductTbl productTbl;
     @EJB
-    private static CategoryTbl categoryTbl;
+    private CategoryTbl categoryTbl;
     @EJB
-    private static OrdersTbl ordersTbl;
+    private OrdersTbl ordersTbl;
 
-    public static Category isProductReprCategoryNull(ProductRepr productRepr){
-        Category category;
-        try{
-            category = categoryTbl.findById(productRepr.getCategoryId());
-        }catch (NullPointerException e){category = null;}
-        return category;
-    }
-    public static Orders isProductReprOrderNull(ProductRepr productRepr){
-        Orders order;
-        try{
-            order = ordersTbl.findById(productRepr.getOrdersId());
-        }catch (NullPointerException e){order = null;}
-        return order;
-    }
 
     @TransactionAttribute
     @Override
     public void insert(ProductRepr productRepr) {
+        Category category;
+        try{
+            category = categoryTbl.findById(productRepr.getCategoryId());
+        }catch (NullPointerException e){category = null;}
+        Orders order;
+        try{
+            order = ordersTbl.findById(productRepr.getOrdersId());
+        }catch (NullPointerException e){order = null;}
         productTbl.insert(new Product(productRepr.getId(), productRepr.getProduct(),
                 productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(),
-                isProductReprCategoryNull(productRepr), isProductReprOrderNull(productRepr)));
+                category, order));
     }
 
     @TransactionAttribute
     @Override
     public void update(ProductRepr productRepr) {
+        Category category;
+        try{
+            category = categoryTbl.findById(productRepr.getCategoryId());
+        }catch (NullPointerException e){category = null;}
+        Orders order;
+        try{
+            order = ordersTbl.findById(productRepr.getOrdersId());
+        }catch (NullPointerException e){order = null;}
         productTbl.update(new Product(productRepr.getId(), productRepr.getProduct(),
                 productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(),
-                isProductReprCategoryNull(productRepr), isProductReprOrderNull(productRepr)));
+                category, order));
     }
 
     @TransactionAttribute
@@ -69,9 +71,17 @@ public class ProductServiceImpl implements ProductServiceLocal, ProductServiceRs
 
     @Override
     public Product convert(ProductRepr productRepr){
+        Category category;
+        try{
+            category = categoryTbl.findById(productRepr.getCategoryId());
+        }catch (NullPointerException e){category = null;}
+        Orders order;
+        try{
+            order = ordersTbl.findById(productRepr.getOrdersId());
+        }catch (NullPointerException e){order = null;}
         return new Product(productRepr.getId(), productRepr.getProduct(),
                 productRepr.getDateOfAdding(), productRepr.getUrl(), productRepr.getDescription(),
-                isProductReprCategoryNull(productRepr), isProductReprOrderNull(productRepr));
+                category, order);
     }
 
     @Override

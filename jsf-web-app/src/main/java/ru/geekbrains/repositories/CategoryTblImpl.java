@@ -14,7 +14,8 @@ public class CategoryTblImpl implements CategoryTbl{
     private EntityManager em;
 
     public Category findById(long id){
-        return em.find(Category.class,id);
+//        return em.find(Category.class,id);
+        return em.createQuery("select c from Category c where c.id=:id", Category.class).setParameter("id",id).getSingleResult();
     }
 
     public List<Category> findAll() {

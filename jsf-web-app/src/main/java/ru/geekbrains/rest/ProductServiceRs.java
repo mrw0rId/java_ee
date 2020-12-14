@@ -16,7 +16,7 @@ public interface ProductServiceRs {
     @Consumes(MediaType.APPLICATION_JSON)
     void insert(ProductRepr productRepr);
 
-    @PUT
+    @PATCH
     @Consumes(MediaType.APPLICATION_JSON)
     void update(ProductRepr productRepr);
 

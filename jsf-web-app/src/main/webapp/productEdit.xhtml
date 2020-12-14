@@ -5,34 +5,24 @@
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<ui:insert name="head">
-    <ui:include src="/head.xhtml">
-        <ui:param name="title" value="Product adding"/>
-    </ui:include>
-</ui:insert>
+
 <h:body>
     <f:event listener="#{productController.preloadData}" type="preRenderView"/>
 
-    <img src="https://cutt.ly/uhztzut" width="80" height="80"/>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Product adding</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"></a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <h:graphicImage id="productEditImg" url="https://cutt.ly/uhztzut" height="80px" width="80px"/>
+
+    <ui:insert name="head">
+        <ui:include src="/head.xhtml">
+            <ui:param name="title" value="Product adding"/>
+        </ui:include>
+    </ui:insert>
 
     <div class="container">
         <div class="row py-2">
             <div class="col-12">
                 <h:form action="#" method="post">
                     <input type="hidden" id="id" name="id"/>
-                    <div class="col-12">
-                        <h:link styleClass="btn btn-primary" value="Back to catalog" outcome="catalog" />
-                    </div>
+
                     <div class="form-group">
                         <h:outputLabel value="Product name"/>
                         <h:inputText styleClass="form-control" id="product"
@@ -49,7 +39,7 @@
                         </h:inputText>
 
                         <h:outputLabel value="Category"/>
-                        <h:selectOneListbox size="1" styleClass="form-control" id="category"
+                        <h:selectOneListbox size="1" styleClass="form-control" id="cat"
                                             value="#{productController.product.categoryId}">
                             <f:selectItems value="#{productController.allCategories}"
                                            var="category"
@@ -68,8 +58,15 @@
                                      value="#{productController.product.description}"
                                      placeholder="Enter description"/>
                     </div>
-                    <h:commandButton value="Submit" styleClass="btn btn-primary"
-                                     action="#{productController.saveProduct}"/>
+                    <div class="form-group">
+                        <h:commandButton value="Submit" styleClass="btn btn-success"
+                                         action="#{productController.saveProduct}"/>
+                        <h:commandButton value="Delete" styleClass="btn btn-danger"
+                                         action="#{productController.deleteProduct(productController.product)}">
+                            <f:ajax event="click" render="productForm"/>
+                        </h:commandButton>
+                        <h:link styleClass="btn btn-primary" value="Back to catalog" outcome="catalog"/>
+                    </div>
                 </h:form>
             </div>
         </div>

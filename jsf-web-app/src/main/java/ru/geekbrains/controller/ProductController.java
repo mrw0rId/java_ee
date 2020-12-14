@@ -9,8 +9,10 @@ import ru.geekbrains.services.ProductServiceLocal;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 import java.util.List;
 
@@ -111,5 +113,9 @@ public class ProductController implements Serializable {
     public String categoryProducts(Long categoryId) {
         this.category = categoryTbl.findById(categoryId);
         return "/categoryProducts.xhtml?faces-redirect=true";
+    }
+    public String logout() {
+        ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false)).invalidate();
+        return "/catalog.xhtml?faces-redirect=true";
     }
 }

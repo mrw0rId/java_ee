@@ -39,41 +39,6 @@ public class ProductRepr implements Serializable {
         this.description = description;
         this.ordersId = orders != null ? orders.getId() : null;
     }
-//    public ProductRepr(String product, LocalDate dateOfAdding, String url, Long categoryId, Long ordersId) {
-//        this.product = product;
-//        this.dateOfAdding = dateOfAdding;
-//        this.url = url;
-//        this.categoryId = categoryId;
-//        this.ordersId = ordersId;
-//    }
-//    public ProductRepr(Long id, String product, LocalDate dateOfAdding, String url, Long categoryId, Long ordersId, String description) {
-//        this.id = id;
-//        this.product = product;
-//        this.dateOfAdding = dateOfAdding;
-//        this.url = url;
-//        this.categoryId = categoryId;
-//        this.ordersId = ordersId;
-//        this.description = description;
-//    }
-//    public ProductRepr(String product, LocalDate dateOfAdding, String url) {
-//        this.product = product;
-//        this.dateOfAdding = dateOfAdding;
-//        this.url = url;
-//    }
-//    public ProductRepr(String product, LocalDate dateOfAdding) {
-//        this.product = product;
-//        this.dateOfAdding = dateOfAdding;
-//    }
-//    public ProductRepr(String product, String url) {
-//        this.product = product;
-//        this.url = url;
-//        this.dateOfAdding = LocalDate.now();
-//    }
-//    public ProductRepr(String product) {
-//        this.product = product;
-//        this.dateOfAdding = LocalDate.now();
-//    }
-
     public Long getOrdersId() {
     return ordersId;
 }
